@@ -20,7 +20,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import org.photonvision.PhotonCamera;
 
-import edu.wpi.first.wpilibj.PWMVictorSPX;
+import edu.wpi.first.wpilibj.CANSparkMax;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.controller.PIDController;
@@ -35,7 +35,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  */
 public class Robot extends TimedRobot {
   // Change this to match the name of your camera
-  PhotonCamera camera = new PhotonCamera("photonvision");
+  PhotonCamera camera = new PhotonCamera("USB_webcam");
 
   // PID constants should be tuned per robot
   PIDController controller = new PIDController(.1, 0, 0);
@@ -43,8 +43,9 @@ public class Robot extends TimedRobot {
   XboxController xboxController = new XboxController(0);
 
   // Drive motors
-  PWMVictorSPX leftMotor = new PWMVictorSPX(0);
-  PWMVictorSPX rightMotor = new PWMVictorSPX(1);
+  CANSparkMax leftMotor = new CANSparkMax(0);
+  CANSparkMax rightMotor = new CANSparkMax(1);
+  // this is for testing only. swerves will be in place of this
   DifferentialDrive drive = new DifferentialDrive(leftMotor, rightMotor);
 
   @Override
